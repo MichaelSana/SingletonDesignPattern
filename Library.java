@@ -2,15 +2,16 @@
  * The singelton class to sort through the library
  * @author Michael Sana
  */
+package SingletonDesignPattern;
 import java.util.HashMap;
 public class Library{
-    HashMap<String,Integer> books = new HashMap<>();
-    Library library;
+    private HashMap<String, Integer> books = new HashMap<>();
+    private static Library library;
 
     /** This makes it so there can only be one instance of Library */
     private Library(){}
 
-    public Library getInstance(){
+    public static Library getInstance(){
         if(library == null){
             System.out.println("Creating our library. Time to begin reading.");
             library = new Library();
@@ -28,7 +29,7 @@ public class Library{
             return false;
         }
     }
-    public void checkinBook(String bookName, int numToAdd){
+    public void checkInBook(String bookName, int numToAdd){
 
         if(books.containsKey(bookName)){
             books.replace(bookName, books.get(bookName) + numToAdd);
